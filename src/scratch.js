@@ -1,61 +1,9 @@
-/* eslint-disable */
+// function getAverage(...args) {
+//   const sum = args.reduce((prev, curr) => {
+//     return prev + curr;
+//   }, 0);
+//   return sum / args.length;
+// }
 
-function getCardId(value) {
-  const cards = [
-    'A♣',
-    '2♣',
-    '3♣',
-    '4♣',
-    '5♣',
-    '6♣',
-    '7♣',
-    '8♣',
-    '9♣',
-    '10♣',
-    'J♣',
-    'Q♣',
-    'K♣',
-    'A♦',
-    '2♦',
-    '3♦',
-    '4♦',
-    '5♦',
-    '6♦',
-    '7♦',
-    '8♦',
-    '9♦',
-    '10♦',
-    'J♦',
-    'Q♦',
-    'K♦',
-    'A♥',
-    '2♥',
-    '3♥',
-    '4♥',
-    '5♥',
-    '6♥',
-    '7♥',
-    '8♥',
-    '9♥',
-    '10♥',
-    'J♥',
-    'Q♥',
-    'K♥',
-    'A♠',
-    '2♠',
-    '3♠',
-    '4♠',
-    '5♠',
-    '6♠',
-    '7♠',
-    '8♠',
-    '9♠',
-    '10♠',
-    'J♠',
-    'Q♠',
-    'K♠',
-  ];
-  return cards.indexOf(value);
-}
-
-console.log(getCardId('K♠'));
+// console.log(getAverage(2, 8, 2));
+console.log(Infinity === 1.7976931348623157e308);
