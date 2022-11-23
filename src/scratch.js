@@ -1,9 +1,24 @@
-// function getAverage(...args) {
-//   const sum = args.reduce((prev, curr) => {
-//     return prev + curr;
-//   }, 0);
-//   return sum / args.length;
-// }
+/* eslint-disable */
+const testArr = ['two', 'one', 'four', 'three'];
+function test(arr) {
+  const numbers = {
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
+  };
 
-// console.log(getAverage(2, 8, 2));
-console.log(Infinity === 1.7976931348623157e308);
+  function comparator(a, b) {
+    return numbers[a] - numbers[b];
+  }
+
+  return arr.sort(comparator);
+}
+
+console.log(test(testArr));
