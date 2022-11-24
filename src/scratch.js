@@ -11,16 +11,11 @@ function group(array, keySelector, valueSelector) {
   const multiMap = new Map();
   let keys = [];
   array.map((e) => keys.push(keySelector(e)));
-  //return Array.from(new Set(keys));
-  function getValues(e) {
-    let res = [];
-    return array.map((e) => res.push(valueSelector(e)));
-  }
 
   keys.map((e) =>
     multiMap.set(
       e,
-      array.filter((el) => el.country === e).map((x) => x.city)
+      array.filter((el) => keySelector(el) === e).map(valueSelector)
     )
   );
   return multiMap;

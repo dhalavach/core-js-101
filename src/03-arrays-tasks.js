@@ -561,8 +561,11 @@ function distinct(arr) {
  */
 function group(array, keySelector, valueSelector) {
   const multiMap = new Map();
-  array.filter((e) => keySelector(e))
-    .map((e) => multiMap.set(e, array.filter((v) => valueSelector(v))));
+  const keys = [];
+  array.map((e) => keys.push(keySelector(e)));
+  // prettier-ignore
+  keys.map((e) => multiMap.set(e, array.filter((el) => keySelector(el) === e).map(valueSelector)));
+  return multiMap;
 }
 
 /**
