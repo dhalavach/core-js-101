@@ -1,37 +1,15 @@
 /* eslint-disable */
 
-// *   Map {
-//   *    "Belarus" => ["Brest", "Grodno", "Minsk"],
-//   *    "Russia" => ["Omsk", "Samara"],
-//   *    "Poland" => ["Lodz"]
-//   *   }
-//   */
+const testArr = [1, 2, 3, 4];
 
-function group(array, keySelector, valueSelector) {
-  const multiMap = new Map();
-  let keys = [];
-  array.map((e) => keys.push(keySelector(e)));
+function swapHeadAndTail(arr) {
+  const head = arr.slice(0, Math.floor(arr.length / 2));
+  const tail = arr.slice(Math.ceil(arr.length / 2), arr.length);
+  if (arr.length % 2 !== 0) {
+    tail.push(arr[Math.floor(arr.length / 2)]);
+  }
 
-  keys.map((e) =>
-    multiMap.set(
-      e,
-      array.filter((el) => keySelector(el) === e).map(valueSelector)
-    )
-  );
-  return multiMap;
+  return [...tail, ...head];
 }
 
-console.log(
-  group(
-    [
-      { country: 'Belarus', city: 'Brest' },
-      { country: 'Russia', city: 'Omsk' },
-      { country: 'Russia', city: 'Samara' },
-      { country: 'Belarus', city: 'Grodno' },
-      { country: 'Belarus', city: 'Minsk' },
-      { country: 'Poland', city: 'Lodz' },
-    ],
-    (item) => item.country,
-    (item) => item.city
-  )
-);
+console.log(swapHeadAndTail(testArr));
