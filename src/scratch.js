@@ -1,8 +1,20 @@
 /* eslint-disable */
-function isTriangle(a, b, c) {
-  const sides = [...arguments].sort((x, y) => y - x);
-  console.log(sides);
-  if (sides[1] ** 2 + sides[2] ** 2 > sides[0] ** 2) return false;
+
+function isInsideCircle(circle, point) {
+  if (circle.radius === 0) return false;
+  /* prettier-ignore */
+  if (point.x < circle.center.x
+    || point.x >= circle.center.x + circle.radius) {
+    return false;
+  }
+  /* prettier-ignore */
+  if (point.y < circle.center.y
+    || point.y >= circle.center.y + circle.radius) {
+    return false;
+  }
   return true;
 }
-console.log(isTriangle(3, 4, 5));
+
+console.log(
+  isInsideCircle({ center: { x: 0, y: 0 }, radius: 10 }, { x: 0, y: 10 })
+);
