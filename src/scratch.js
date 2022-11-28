@@ -1,9 +1,8 @@
 /* eslint-disable */
-function getFactorial(n) {
-  if (n === 1) {
-    return 1;
-  }
-  return n * getFactorial(n - 1);
+function isTriangle(a, b, c) {
+  const sides = [...arguments].sort((x, y) => y - x);
+  console.log(sides);
+  if (sides[1] ** 2 + sides[2] ** 2 > sides[0] ** 2) return false;
+  return true;
 }
-
-console.log(getFactorial(5));
+console.log(isTriangle(3, 4, 5));

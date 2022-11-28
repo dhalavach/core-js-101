@@ -82,8 +82,10 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  const sides = [a, b, c].sort((x, y) => x - y);
+  if (sides[0] + sides[1] > sides[2]) return true;
+  return false;
 }
 
 /**
