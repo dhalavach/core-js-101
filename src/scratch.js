@@ -1,20 +1,14 @@
 /* eslint-disable */
 
-function isInsideCircle(circle, point) {
-  if (circle.radius === 0) return false;
-  /* prettier-ignore */
-  if (point.x < circle.center.x
-    || point.x >= circle.center.x + circle.radius) {
-    return false;
+function findFirstSingleChar(str) {
+  const arr = str.replace(/\s/g, '').split('');
+  arr.sort();
+  console.log(arr);
+  if (arr[0] !== arr[1]) return arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i - 1] !== arr[i] && arr[i] !== arr[i + 1]) return arr[i];
   }
-  /* prettier-ignore */
-  if (point.y < circle.center.y
-    || point.y >= circle.center.y + circle.radius) {
-    return false;
-  }
-  return true;
+  return null;
 }
 
-console.log(
-  isInsideCircle({ center: { x: 0, y: 0 }, radius: 10 }, { x: 0, y: 10 })
-);
+console.log(findFirstSingleChar('abracradabra'));
