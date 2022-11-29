@@ -259,8 +259,14 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // return str.split('').reverse().join('');
+  // return str === '' ? '' : reverseString(str.substring(1)) + str.charAt(0);
+  let result = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    result += str[i];
+  }
+  return result;
 }
 
 /**
@@ -275,8 +281,9 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+
+function reverseInteger(num) {
+  return Number(num.toString().split('').reverse().join(''));
 }
 
 /**
@@ -299,8 +306,23 @@ function reverseInteger(/* num */) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const arr = ccn
+    .toString()
+    .split('')
+    .reverse()
+    .map((x) => parseInt(x, 10));
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    if (i % 2 !== 0) {
+      arr[i] *= 2;
+      /* prettier-ignore */
+      if (arr[i].toString().length > 1) {
+        arr[i] = parseInt(arr[i].toString().split('')[0], 10) + parseInt(arr[i].toString().split('')[1], 10);
+      }
+    }
+  }
+  const sum = arr.reduce((prev, curr) => prev + curr, 0);
+  return sum % 10 === 0;
 }
 
 /**
