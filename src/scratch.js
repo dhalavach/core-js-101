@@ -1,26 +1,29 @@
 /* eslint-disable */
 
-function isBracketsBalanced(str) {
-  let brackets = '[]{}()<>';
-  let stack = [];
-
-  for (let bracket of str) {
-    let bracketsIndex = brackets.indexOf(bracket);
-
-    if (bracketsIndex === -1) {
-      continue;
-    }
-
-    if (bracketsIndex % 2 === 0) {
-      stack.push(bracketsIndex + 1);
-    } else {
-      if (stack.pop() !== bracketsIndex) {
-        return false;
+function getMatrixProduct(m1, m2) {
+  const result = [];
+  for (let i = 0; i < m1.length; i++) {
+    result[i] = [];
+    for (let j = 0; j < m2[0].length; j++) {
+      var sum = 0;
+      for (let k = 0; k < m1[0].length; k++) {
+        sum += m1[i][k] * m2[k][j];
       }
+      result[i][j] = sum;
     }
   }
-  return stack.length === 0;
+  return result;
 }
-console.log(isBracketsBalanced('[]'));
-console.log(isBracketsBalanced('[[]'));
-console.log(isBracketsBalanced('[[}}'));
+
+const m1 = [
+  [1, 0, 0],
+  [0, 1, 0],
+  [0, 0, 1],
+];
+let m2 = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+console.log(getMatrixProduct(m1, m2));
