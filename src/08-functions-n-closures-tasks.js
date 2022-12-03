@@ -23,7 +23,10 @@
  *
  */
 function getComposition(f, g) {
-  const compose = (a, b) => (x) => a(b(x));
+  // const compose = (a, b) => (x) => a(b(x));
+  // returnc compose(f, g);
+  // prettier-ignore
+  const compose = (...functions) => (x) => functions.reduceRight((res, fn) => fn(res), x);
   return compose(f, g);
 }
 
