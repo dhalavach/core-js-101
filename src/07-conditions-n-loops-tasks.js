@@ -470,6 +470,11 @@ function getMatrixProduct(m1, m2) {
   return result;
 }
 
+// let MatrixProd = (a, b) =>
+//   a.map((row, i) =>
+//     b[0].map((_, j) => row.reduce((acc, _, n) => acc + a[i][n] * b[n][j], 0))
+//   );
+
 /**
  * Returns the evaluation of the specified tic-tac-toe position.
  * See the details: https://en.wikipedia.org/wiki/Tic-tac-toe
@@ -500,8 +505,23 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(game) {
+  const lines = [];
+  let winner;
+
+  game.map((row) => lines.push(row.join('')));
+  lines.push(game[0][0] + game[1][0] + game[2][0]);
+  lines.push(game[0][1] + game[1][1] + game[2][1]);
+  lines.push(game[0][2] + game[1][2] + game[2][2]);
+  lines.push(game[0][0] + game[1][1] + game[2][2]);
+  lines.push(game[0][2] + game[1][1] + game[2][0]);
+
+  for (let i = 0; i <= lines.length; i += 1) {
+    if (lines[i] === '000') winner = '0';
+    if (lines[i] === 'XXX') winner = 'X';
+  }
+
+  return winner;
 }
 
 module.exports = {

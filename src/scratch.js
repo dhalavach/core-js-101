@@ -1,29 +1,27 @@
 /* eslint-disable */
+function evaluateTicTacToePosition(game) {
+  const lines = [];
+  let winner;
 
-function getMatrixProduct(m1, m2) {
-  const result = [];
-  for (let i = 0; i < m1.length; i++) {
-    result[i] = [];
-    for (let j = 0; j < m2[0].length; j++) {
-      var sum = 0;
-      for (let k = 0; k < m1[0].length; k++) {
-        sum += m1[i][k] * m2[k][j];
-      }
-      result[i][j] = sum;
-    }
+  game.map((row) => lines.push(row.join('')));
+  lines.push(game[0][0] + game[1][0] + game[2][0]);
+  lines.push(game[0][1] + game[1][1] + game[2][1]);
+  lines.push(game[0][2] + game[1][2] + game[2][2]);
+  lines.push(game[0][0] + game[1][1] + game[2][2]);
+  lines.push(game[0][2] + game[1][1] + game[2][0]);
+
+  for (line of lines) {
+    if (line === '000') winner = '0';
+    if (line === 'XXX') winner = 'X';
   }
-  return result;
+  return winner;
 }
 
-const m1 = [
-  [1, 0, 0],
-  [0, 1, 0],
-  [0, 0, 1],
+const X = 'X';
+const O = '0';
+const game = [
+  [O, X, O],
+  [X, X, O],
+  [O, X],
 ];
-let m2 = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
-
-console.log(getMatrixProduct(m1, m2));
+console.log(evaluateTicTacToePosition(game));
