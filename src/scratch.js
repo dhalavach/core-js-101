@@ -1,27 +1,14 @@
 /* eslint-disable */
-function evaluateTicTacToePosition(game) {
-  const lines = [];
-  let winner;
+// const res = (x) => args[0] * x ** 2 + args[1] * x + args[2];
 
-  game.map((row) => lines.push(row.join('')));
-  lines.push(game[0][0] + game[1][0] + game[2][0]);
-  lines.push(game[0][1] + game[1][1] + game[2][1]);
-  lines.push(game[0][2] + game[1][2] + game[2][2]);
-  lines.push(game[0][0] + game[1][1] + game[2][2]);
-  lines.push(game[0][2] + game[1][1] + game[2][0]);
-
-  for (line of lines) {
-    if (line === '000') winner = '0';
-    if (line === 'XXX') winner = 'X';
-  }
-  return winner;
+function getPolynom(...args) {
+  const c1 = args[0];
+  const c2 = args[1] || 0;
+  const c3 = args[2] || 0;
+  if (args.length === 1) return (x) => args[0];
+  const res = (x) =>
+    c1 * x ** (args.length - 1) + c2 * x ** (args.length - 2) + c3;
+  return res;
 }
 
-const X = 'X';
-const O = '0';
-const game = [
-  [O, X, O],
-  [X, X, O],
-  [O, X],
-];
-console.log(evaluateTicTacToePosition(game));
+console.log(getPolynom(8)(0));

@@ -24,7 +24,7 @@
  */
 function getComposition(f, g) {
   // const compose = (a, b) => (x) => a(b(x));
-  // returnc compose(f, g);
+  // return compose(f, g);
   // prettier-ignore
   const compose = (...functions) => (x) => functions.reduceRight((res, fn) => fn(res), x);
   return compose(f, g);
@@ -46,8 +46,8 @@ function getComposition(f, g) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return (x) => x ** exponent;
 }
 
 /**
@@ -63,8 +63,15 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+// TODO refactor!
+function getPolynom(...args) {
+  const c1 = args[0];
+  const c2 = args[1] || 0;
+  const c3 = args[2] || 0;
+  if (args.length === 1) return () => args[0];
+  // prettier-ignore
+  const res = (x) => c1 * x ** (args.length - 1) + c2 * x ** (args.length - 2) + c3;
+  return res;
 }
 
 /**
