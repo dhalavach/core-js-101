@@ -171,6 +171,7 @@ function partialUsingArguments(fn, ...args1) {
   return function (...args2) {
     return fn(...args1, ...args2);
   };
+  //  return fn.bind(null, ...args1);
 }
 
 /**
@@ -190,8 +191,12 @@ function partialUsingArguments(fn, ...args1) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(/* startFrom */) {
-  throw new Error('Not implemented');
+function getIdGeneratorFunction(startFrom) {
+  let counter = startFrom - 1;
+  return function () {
+    counter += 1;
+    return counter;
+  };
 }
 
 module.exports = {
