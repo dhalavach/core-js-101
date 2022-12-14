@@ -118,14 +118,13 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
-  const rt = (f, a) => {
-    let n = 0;
-    while (n < a) {
-      f();
-      n += 1;
-    }
-  };
-  return rt(func, attempts);
+  try {
+    func();
+    return func;
+  } catch (err) {
+    if (attempts === 1) throw err;
+    return retry(func, attempts - 1);
+  }
 }
 
 /**
